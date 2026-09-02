@@ -89,3 +89,11 @@ Keep this file in the repo and **commit it** with your fixes.
 **What is wrong:** Seed dates were stored as Date objects but Local Storage restored them as strings. The sorting logic attempted arithmetic directly on those strings, causing invalid date comparisons after reload.
 
 **What I changed:** Normalized persisted state through the existing hydration logic and made dateValue consistently return a numeric timestamp.
+
+## Bug 11
+
+**How to reproduce:** Add a new member without adding a new expense.
+
+**What is wrong:** The new member did not immediately appear in the “Paid so far” list because the memoized calculation only depended on expenses.
+
+**What I changed:** Added members to the useMemo dependency array so the summary recalculates whenever the member list changes.
