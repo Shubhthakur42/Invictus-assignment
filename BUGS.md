@@ -34,4 +34,10 @@ Keep this file in the repo and **commit it** with your fixes.
 
 **What I changed:** Changed expense update and deletion to use the expense's unique ID instead of an array index.
 
+## Bug 4
 
+**How to reproduce:** Add or inspect an expense where a member pays more than their own share.
+
+**What is wrong:** Positive balances were displayed as money the member owed, while negative balances were displayed as money owed to the member.
+
+**What I changed:** Corrected the balance labels so a positive balance means the member is owed money and a negative balance means the member owes money.
