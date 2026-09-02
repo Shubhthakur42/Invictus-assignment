@@ -18,10 +18,11 @@ Keep this file in the repo and **commit it** with your fixes.
 
 ## Bug 2
 
-**How to reproduce:**
+**How to reproduce:** Open the Paid by filter and select a member
 
-**What is wrong:**
+**What is wrong:**Expenses paid by the selected member is not displaying because the select value was a string while expense paidBy values were numbers.
 
-**What I changed:**
+**What I changed:** Before comparing them in the Paid by filter I normalized both values to numbers before comparing them in the Paid by filter.
 
 ---
+
