@@ -42,7 +42,16 @@ export function suggestSettlements(balances, members) {
       });
       c.amount -= d.amount;
       i += 1;
-    } else {
+    } 
+    else {
+      transfers.push({
+        from: d.id,
+        to: c.id,
+        fromName: d.fromName ?? nameOf(d.id),
+        toName: c.toName ?? nameOf(c.id),
+        amount: d.amount,
+      });
+
       i += 1;
       j += 1;
     }

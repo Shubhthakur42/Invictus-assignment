@@ -73,3 +73,11 @@ Keep this file in the repo and **commit it** with your fixes.
 **What is wrong:** The application only checked that the percentages summed to 100 and therefore accepted negative and over-100% individual percentages.
 
 **What I changed:** Added validation requiring every percentage to be between 0 and 100 while still requiring the total to equal 100%.
+
+## Bug 9
+
+**How to reproduce:** Create balances where one debtor owes exactly the same amount that one creditor is owed.
+
+**What is wrong:** When the debtor and creditor amounts were equal, the settlement algorithm advanced past both members without creating a transfer.
+
+**What I changed:** Added the missing transfer when debtor and creditor balances are exactly equal.
