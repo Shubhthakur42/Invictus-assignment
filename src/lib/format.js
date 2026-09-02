@@ -13,5 +13,9 @@ export function formatDate(date) {
 }
 
 export function dateValue(date) {
-  return date;
+  const value = date instanceof Date
+    ? date
+    : new Date(date);
+  const time = value.getTime();
+  return Number.isNaN(time) ? 0 : time;
 }

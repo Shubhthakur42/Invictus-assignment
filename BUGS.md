@@ -81,3 +81,11 @@ Keep this file in the repo and **commit it** with your fixes.
 **What is wrong:** When the debtor and creditor amounts were equal, the settlement algorithm advanced past both members without creating a transfer.
 
 **What I changed:** Added the missing transfer when debtor and creditor balances are exactly equal.
+
+## Bug 10
+
+**How to reproduce:** Open the app, confirm expenses are shown newest first, then refresh the browser and check the expense order again.
+
+**What is wrong:** Seed dates were stored as Date objects but Local Storage restored them as strings. The sorting logic attempted arithmetic directly on those strings, causing invalid date comparisons after reload.
+
+**What I changed:** Normalized persisted state through the existing hydration logic and made dateValue consistently return a numeric timestamp.
