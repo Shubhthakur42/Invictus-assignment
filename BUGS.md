@@ -57,3 +57,11 @@ Keep this file in the repo and **commit it** with your fixes.
 **What is wrong:** Each person received $33.33, causing the shares to total $99.99 instead of the original $100.
 
 **What I changed:** Changed equal-split rounding to work in cents and distribute any remainder so the shares always total exactly to the original expense.
+
+## Bug 7
+
+**How to reproduce:** Add an expense using custom percentages where the calculated shares require rounding, such as $20 split as 33.33%, 33.33%, and 33.34%.
+
+**What is wrong:** Each percentage share was rounded independently, which could make the total shares differ from the original expense amount.
+
+**What I changed:** Calculated percentage shares in cents and assigned the remaining cents to the final participant so all shares total exactly to the expense amount.

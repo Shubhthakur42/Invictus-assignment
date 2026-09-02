@@ -26,10 +26,23 @@ export function percentsSumTo100(percents) {
 }
 
 export function splitByPercent(amount, percents) {
+  const entries = Object.entries(percents);
+  if (!entries.length) return {};
+  const totalCents = Math.round(Number(amount) * 100);
   const shares = {};
-  for (const [id, pct] of Object.entries(percents)) {
-    shares[id] = Number(((amount * Number(pct)) / 100).toFixed(2));
-  }
+  let assignedCents = 0;
+  entries.forEach(([id, pct], index) => {
+    if (index === entries.length - 1) {
+      shares[id] =
+        (totalCents - assignedCents) / 100;
+      return;
+    }
+    const cents = Math.round(
+      (totalCents * Number(pct)) / 100
+    );
+    shares[id] = cents / 100;
+    assignedCents += cents;
+  });
   return shares;
 }
 
