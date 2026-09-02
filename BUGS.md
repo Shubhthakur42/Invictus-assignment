@@ -49,3 +49,11 @@ Keep this file in the repo and **commit it** with your fixes.
 **What is wrong:** The payer was credited with the full amount and then incorrectly charged another portion of the same expense.
 
 **What I changed:** Removed the extra deduction so a payer who is not part of the split receives the full amount they paid back.
+
+## Bug 6
+
+**How to reproduce:** Add a $100 expense and split it equally between three people.
+
+**What is wrong:** Each person received $33.33, causing the shares to total $99.99 instead of the original $100.
+
+**What I changed:** Changed equal-split rounding to work in cents and distribute any remainder so the shares always total exactly to the original expense.
