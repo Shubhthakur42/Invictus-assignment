@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { percentsSumTo100 } from "../lib/money.js";
+import { validPercents } from "../lib/money.js";
 
 const CATEGORIES = ["Food", "Travel", "Fun", "Stay"];
 
@@ -49,8 +49,8 @@ export default function AddExpenseForm({ members, onAdd }) {
       setError("Pick at least one person to split with.");
       return;
     }
-    if (splitType === "percent" && !percentsSumTo100(percents)) {
-      setError("Percentages must add to 100.");
+    if (splitType === "percent" && !validPercents(percents)) {
+      setError("Each percentage must be between 0 and 100, and percentages must add to 100.");
       return;
     }
 
@@ -176,6 +176,8 @@ export default function AddExpenseForm({ members, onAdd }) {
                 <span>{m.name}</span>
                 <input
                   type="number"
+                  min="0"
+                  max="100"
                   step="0.01"
                   value={percents[m.id] ?? ""}
                   onChange={(e) =>

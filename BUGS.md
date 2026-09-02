@@ -65,3 +65,11 @@ Keep this file in the repo and **commit it** with your fixes.
 **What is wrong:** Each percentage share was rounded independently, which could make the total shares differ from the original expense amount.
 
 **What I changed:** Calculated percentage shares in cents and assigned the remaining cents to the final participant so all shares total exactly to the expense amount.
+
+## Bug 8
+
+**How to reproduce:** Select Custom %, enter -10% for one participant and 110% for another, then save the expense.
+
+**What is wrong:** The application only checked that the percentages summed to 100 and therefore accepted negative and over-100% individual percentages.
+
+**What I changed:** Added validation requiring every percentage to be between 0 and 100 while still requiring the total to equal 100%.

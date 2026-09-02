@@ -52,3 +52,18 @@ export function sharesForExpense(expense) {
   }
   return splitEqual(expense.amount, expense.splitWith);
 }
+
+export function validPercents(percents) {
+  const values = Object.values(percents).map(Number);
+  if (values.some((value) => !Number.isFinite(value))) {
+    return false;
+  }
+  if (values.some((value) => value < 0 || value > 100)) {
+    return false;
+  }
+  const total = values.reduce(
+    (sum, value) => sum + value,
+    0
+  );
+  return Math.abs(total - 100) < 0.001;
+}
