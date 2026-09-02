@@ -55,8 +55,8 @@ function ExpenseRow({ expense, memberMap, onDelete, onSaveAmount }) {
 export default function ExpenseList({
   expenses,
   members,
-  onDeleteAt,
-  onUpdateAt,
+  onDelete,
+  onUpdate,
 }) {
   const memberMap = Object.fromEntries(members.map((m) => [m.id, m]));
   const sorted = [...expenses].sort((a, b) => dateValue(b.date) - dateValue(a.date));
@@ -70,11 +70,11 @@ export default function ExpenseList({
       ) : (
         sorted.map((expense, index) => (
           <ExpenseRow
-            key={index}
+            key={expense.id}
             expense={expense}
             memberMap={memberMap}
-            onDelete={() => onDeleteAt(index)}
-            onSaveAmount={(amount) => onUpdateAt(index, { amount })}
+            onDelete={() => onDeleteAt(expense.id)}
+            onSaveAmount={(amount) => onUpdateAt(expense.id, { amount })}
           />
         ))
       )}

@@ -26,3 +26,12 @@ Keep this file in the repo and **commit it** with your fixes.
 
 ---
 
+## Bug 3
+
+**How to reproduce:** Apply a filter or rely on the sorted expense list, then edit or delete an expense that is not at the same index in the original expense array.
+
+**What is wrong:** The UI used the filtered/sorted array index when updating or deleting the original expense array, which could modify or delete a different expense.
+
+**What I changed:** Changed expense update and deletion to use the expense's unique ID instead of an array index.
+
+
