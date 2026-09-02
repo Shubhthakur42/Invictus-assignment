@@ -41,3 +41,11 @@ Keep this file in the repo and **commit it** with your fixes.
 **What is wrong:** Positive balances were displayed as money the member owed, while negative balances were displayed as money owed to the member.
 
 **What I changed:** Corrected the balance labels so a positive balance means the member is owed money and a negative balance means the member owes money.
+
+## Bug 5
+
+**How to reproduce:** Add an expense where the payer is not included in the split, such as a $600 cab paid by Aisha and shared only by Ben and Carlos.
+
+**What is wrong:** The payer was credited with the full amount and then incorrectly charged another portion of the same expense.
+
+**What I changed:** Removed the extra deduction so a payer who is not part of the split receives the full amount they paid back.
